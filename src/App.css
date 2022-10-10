@@ -14,10 +14,29 @@ h1 {
   padding: 8px;
 }
 .main {
+  flex-direction: column;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
   flex-wrap: wrap;
   padding: 14px;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heading {
+  color: black;
+  font-size: 80px;
+  margin: 10px;
+}
+.btn {
+  background-color: blue;
+  color: white;
+  padding: 5px;
+  margin: 5px;
 }
 
 .movie {
