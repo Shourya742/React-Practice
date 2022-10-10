@@ -1,9 +1,10 @@
+import "./header.css";
 const Header = () => {
   return (
-    <>
-      <h1>Header</h1>
-      <p>this is amazing tutorial</p>
-    </>
+    <div className="header">
+      <h1 id="topic">Header</h1>
+      <p style={{ backgroundColor: "black" }}>this is amazing tutorial</p>
+    </div>
   );
 };
 
