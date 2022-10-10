@@ -1,12 +1,26 @@
 import "./App.css";
-import Student from "./components/Student";
+import Header from "./components/Header";
+import Movie from "./components/Movie";
+import movies from "./data.json";
+
 // Cannot Change name and ordering
 // if we use small letter then we the compiler take it as a jsx element not as a component
 
 function App() {
   return (
     <div className="App">
-      <Student />
+      <Header />
+      <div className="main">
+        {movies.map((element) => {
+          return (
+            <Movie
+              title={element.Title}
+              year={element.Year}
+              img={element.Poster}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -1,12 +1,38 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #fff;
   color: white;
-  min-height: 100vh;
-}
-.header {
-  background-color: yellowgreen;
 }
 .footer {
   background-color: blue;
+}
+h1 {
+  margin: 0px;
+}
+.header {
+  background-color: rgb(33, 6, 122);
+  padding: 8px;
+}
+.main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 14px;
+}
+
+.movie {
+  background-color: rgb(225, 214, 214);
+  color: black;
+  border: 1px solid gray;
+  padding: 3px;
+  font-weight: bold;
+  text-align: start;
+  width: 25%;
+  margin-top: 14px;
+  height: 300px;
+}
+
+.movie img {
+  width: 100%;
+  height: 200px;
 }
