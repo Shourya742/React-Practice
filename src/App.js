@@ -2,31 +2,24 @@ import "./App.css";
 import Header from "./components/Header";
 // Cannot Change name and ordering
 // if we use small letter then we the compiler take it as a jsx element not as a component
-
-import { useReducer } from "react";
-
-const reducer = (state, action) => {
-  if (action.type == "INC") {
-    return state + 2;
-  } else if (action.type == "DEC") {
-    return state - 2;
-  } else {
-    return state * 2;
-  }
-
-  return state;
-};
-
+import { useState, useEffect } from "react";
+import useFetch from "./components/useFetch";
 function App() {
-  const [state, dispatch] = useReducer(reducer, 0);
+  const [data] = useFetch(
+    "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001"
+  );
   return (
     <>
       <div className="App">
         <Header />
-        <h1>{state}</h1>
-        <button onClick={() => dispatch({ type: "INC" })}>Increment</button>
-        <button onClick={() => dispatch({ type: "DEC" })}>Decrement</button>
-        <button onClick={() => dispatch({ type: "MUL" })}>Multiply</button>
+        {data.map((e, i) => {
+          return (
+            <div key={i}>
+              <h1>e.firstName</h1>
+              <h1>e.email</h1>
+            </div>
+          );
+        })}
       </div>
     </>
   );
