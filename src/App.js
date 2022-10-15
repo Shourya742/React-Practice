@@ -2,25 +2,38 @@ import "./App.css";
 import Header from "./components/Header";
 // Cannot Change name and ordering
 // if we use small letter then we the compiler take it as a jsx element not as a component
-import ComA from "./components/ComA";
-import { useState, createContext } from "react";
 
-const AppState = createContext();
+import { useState, createContext } from "react";
+import { useEffect, useRef } from "react";
 
 function App() {
-  const [data, setData] = useState("Huhahah");
-  const [name, setName] = useState({ name: "Shourya", age: "infinity" });
+  const [input, setInput] = useState("");
+
+  const prevState = useRef("");
+  const inputField = useRef();
+
+  useEffect(() => {
+    //  setCounter(count + 1);
+    prevState.current = input;
+  }, [input]);
+  const formHandler = (e) => {
+    setInput(e.target.value);
+  };
+
+  const clickHandler = () => {
+    inputField.current.value = "Shourya";
+  };
+
   return (
     <>
-      <AppState.Provider value={{ data, name }}>
-        <div className="App">
-          <Header />
-          <ComA />
-        </div>
-      </AppState.Provider>
+      <div className="App">
+        <Header />
+        <input ref={inputField} value={input} onChange={formHandler} />
+        <h4>{`previous state is ${prevState.current}`}</h4>
+        <button onClick={clickHandler}> Click Me!!</button>
+      </div>
     </>
   );
 }
 
 export default App;
-export { AppState };
