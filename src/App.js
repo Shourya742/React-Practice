@@ -3,34 +3,30 @@ import Header from "./components/Header";
 // Cannot Change name and ordering
 // if we use small letter then we the compiler take it as a jsx element not as a component
 
-import { useState, createContext } from "react";
-import { useEffect, useRef } from "react";
+import { useReducer } from "react";
+
+const reducer = (state, action) => {
+  if (action.type == "INC") {
+    return state + 2;
+  } else if (action.type == "DEC") {
+    return state - 2;
+  } else {
+    return state * 2;
+  }
+
+  return state;
+};
 
 function App() {
-  const [input, setInput] = useState("");
-
-  const prevState = useRef("");
-  const inputField = useRef();
-
-  useEffect(() => {
-    //  setCounter(count + 1);
-    prevState.current = input;
-  }, [input]);
-  const formHandler = (e) => {
-    setInput(e.target.value);
-  };
-
-  const clickHandler = () => {
-    inputField.current.value = "Shourya";
-  };
-
+  const [state, dispatch] = useReducer(reducer, 0);
   return (
     <>
       <div className="App">
         <Header />
-        <input ref={inputField} value={input} onChange={formHandler} />
-        <h4>{`previous state is ${prevState.current}`}</h4>
-        <button onClick={clickHandler}> Click Me!!</button>
+        <h1>{state}</h1>
+        <button onClick={() => dispatch({ type: "INC" })}>Increment</button>
+        <button onClick={() => dispatch({ type: "DEC" })}>Decrement</button>
+        <button onClick={() => dispatch({ type: "MUL" })}>Multiply</button>
       </div>
     </>
   );
